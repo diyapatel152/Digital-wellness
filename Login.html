@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Digital Wellness Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/free-psd/entrance-emergency-room-hospital-generative-ai_587448-2182.jpg?t=st=1735284649~exp=1735288249~hmac=1ba9539155d890242e7943530b53f7f1ccff0aa46169db1f25aa26901abd2240&w=900');
+            background-size: cover; 
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2 3 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color:lightgray;
+            color:black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color:rgb(0,0,0,0.1);
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 15px;
+     
+        }
+
+</style>
+</head>
+<body>
+<center>
+    <header>
+        <h1>Welcome to Digital Wellness</h1>
+    </header>
+    <div class="login-container">
+    <h1>Login to Digital Wellness</h1>
+    <form id="loginForm">
+        <br><label for="username">Username:</label>
+        <input type="text" id="username" name="username" required></br>
+        
+        <br><label for="password">Password:</label>
+        <input type="password" id="password" name="password" required></br>
+
+        <br><button type="submit">Login</button></br>
+    </form>
+    <p class="message">Don't have an account? <a href="sign up.html">Sign up</a></p>
+</div>
+<script src="script.js"></script>
+</center>
+</body>
+</html>
+
+
+

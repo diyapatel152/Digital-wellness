@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Appointment</title>
+  <style>
+        * {
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-image: url('https://brutkasten.com/wp-content/uploads/2023/10/digitalhealth-766x395.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .appointment-container {
+            padding: 40px;
+            width: 100%;
+            max-width: 500px; 
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            text-align: center;
+            color: #555;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        fieldset {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        legend {
+            font-weight: bold;
+            color: #555;
+            padding: 0 10px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        label {
+            color: #555;
+            font-size: 1rem;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #555;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: gray;
+        }
+        @media (max-width: 600px) {
+            .appointment-container {
+                padding: 20px;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+  </style>
+</head>
+<body>
+  <div class="appointment-container">
+    <h2>Book Your Appointment</h2>
+    <form action="#" method="post">
+      <fieldset>
+        <legend>Personal Details</legend>
+        <div class="form-group">
+          <label for="fullName">Full Name:</label>
+          <input type="text" id="fullName" name="fullName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Appointment Details</legend>
+        <div class="form-group">
+          <label for="service">Select Service:</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service</option>
+            <option value="dentist" data-services="" data-doctors="" data-hospitals="">Dentist</option>
+            <option value="neurologists" data-services="" data-doctors="" data-hospitals="">Neurologists</option>
+            <option value="Cardiologists" data-services="" data-doctors="" data-hospitals="">Cardiologists</option>
+            <option value="Orthopedic" data-services="" data-doctors="" data-hospitals="">Orthopedic</option>
+            <option value="General Physicians" data-services="" data-doctors="" data-hospitals="">General Physicians</option>
+          </select>
+        </div>
+
+        <div id="extra-details" style="margin-top: 20px; display: none;">
+          <div class="form-group">
+            <label for="serviceType">Service Provided:</label>
+            <select id="serviceType" name="serviceType"></select>
+          </div>
+
+          <div class="form-group">
+            <label for="doctor">Select Doctor:</label>
+            <select id="doctor" name="doctor"></select>
+          </div>
+
+          <div class="form-group">
+            <label for="hospital">Select Hospital:</label>
+            <select id="hospital" name="hospital"></select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="date">Appointment Date:</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+
+        <div class="form-group">
+          <label for="time">Appointment Time:</label>
+          <input type="time" id="time" name="time" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message (Optional):</label>
+          <textarea id="message" name="message" rows="4" placeholder="Any additional information or concerns"></textarea>
+        </div>
+      </fieldset>
+
+      <button type="submit">Book Appointment</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("service").addEventListener("change", function () {
+      const selectedOption = this.options[this.selectedIndex];
+      const extraDetails = document.getElementById("extra-details");
+
+      document.getElementById("serviceType").innerHTML = "";
+      document.getElementById("doctor").innerHTML = "";
+      document.getElementById("hospital").innerHTML = "";
+
+      if (selectedOption.hasAttribute("data-services")) {
+        extraDetails.style.display = "block";
+
+        const services = selectedOption.getAttribute("data-services").split(",");
+        const doctors = selectedOption.getAttribute("data-doctors").split(",");
+        const hospitals = selectedOption.getAttribute("data-hospitals").split(",");
+
+        services.forEach(service => {
+          const option = document.createElement("option");
+          option.value = service.toLowerCase().replace(/\s+/g, "_");
+          option.textContent = service;
+          document.getElementById("serviceType").appendChild(option);
+        });
+
+        doctors.forEach(doctor => {
+          const option = document.createElement("option");
+          option.value = doctor.toLowerCase().replace(/\s+/g, "_");
+          option.textContent = doctor;
+          document.getElementById("doctor").appendChild(option);
+        });
+
+        hospitals.forEach(hospital => {
+          const option = document.createElement("option");
+          option.value = hospital.toLowerCase().replace(/\s+/g, "_");
+          option.textContent = hospital;
+          document.getElementById("hospital").appendChild(option);
+        });
+      } else {
+        extraDetails.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
