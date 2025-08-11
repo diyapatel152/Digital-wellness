@@ -4,3 +4,7 @@ The Digital Wellness website, users can access hospital information, check docto
 
 # Home page:
 <img width="1909" height="889" alt="Image" src="https://github.com/user-attachments/assets/aa86567b-e461-40e5-afab-7e68b6ab1675" />
+
+# Service page:
+
+
